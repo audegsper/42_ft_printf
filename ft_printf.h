@@ -20,10 +20,10 @@ int	g_ret;
 int	ft_printf(const char *format, ...);
 
 int ft_parse_flag(const char** format);
-int	ft_parse_number(const char** format, va_list* ap);
+int	ft_parse_number(const char** format, va_list* ap, char option);
 long long ft_parse_specifier(const char** format, va_list* ap);
 
-int	ft_print_value(t_info* info);
+int	ft_print_value(t_info info);
 int print_write(int gap, char* str);
 
 void	put_number(long long n, char* base, int len);

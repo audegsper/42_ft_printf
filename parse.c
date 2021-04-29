@@ -4,6 +4,7 @@ int ft_parse_flag(const char** format)
 {
 	int flag;
 
+	flag = 0;
 	while (**format == '-' || **format == '0')
 	{
 		if (**format == '0' && (*format)++)
@@ -14,7 +15,7 @@ int ft_parse_flag(const char** format)
 	return flag;
 }
 
-int	ft_parse_number(const char** format, va_list* ap)
+int	ft_parse_number(const char** format, va_list* ap, char option)
 {
 	int	ret;
 
@@ -23,10 +24,16 @@ int	ft_parse_number(const char** format, va_list* ap)
 	{
 		(*format)++;
 		ret = va_arg(*ap, int);
+		if (option == 'p' && ret == 0)
+			ret = -3;
+		else if (option == 'p' && ret < 0)
+			ret = -2;
 		return (ret);
 	}
 	while ('0' <= **format && **format <= '9')
 		ret = ret * 10 + *((*format)++) - '0';
+	if (option == 'p')
+		ret = (ret > 0 ? ret : -1);
 	return (ret);
 }
 
