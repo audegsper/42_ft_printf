@@ -4,13 +4,13 @@ size_t	ft_strlen(const char* s)
 {
 	size_t i;
 
-	i = 0;
-	while (*s++)
+	i = (*s == '\0' || *s < 0 ? 1 : 0);
+	while (*s > 0 && *s < 128 && *s++)
 		i++;
 	return (i);
 }
 
-int		ft_get_number_len(long long n, int len)
+int		ft_numlen(long long n, int len)
 {
 	int	i;
 
@@ -20,21 +20,29 @@ int		ft_get_number_len(long long n, int len)
 	return (i);
 }
 
-void	put_number(long long n, char* base, int len)
+size_t	ft_typelen(const char** s, long long n, int len, t_info info)
 {
-	if (n > len - 1)
-		put_number(n / len, base, len);
-	write(1, &(base[n % len]), 1) && g_ret++;
-}
+	size_t	i;
 
-void	ft_bzero(void* s, size_t n)
-{
-	char* ptr;
-
-	ptr = (char*)s;
-	while (n--)
+	i = 0;
+	if (info.type == 'c')
 	{
-		*ptr = 0;
-		ptr++;
+		i = ((char)n == '\0' || (char)n < 0 ? 1 : 0);
+		if ((char)n > 0 && (char)n < 128)
+			i++;
 	}
+	else if (info.type == 's')
+	{
+		while (*((char*)n + i) != '\0')
+			i++;
+		if (i == 1)
+			*s = **s;
+	}
+	else
+	{
+		i = 1;
+		while ((n /= len) > 0)
+			++i;
+	}
+	return (i);
 }

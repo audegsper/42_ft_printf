@@ -7,6 +7,7 @@ void	init_struct(t_info* info)
 	info->width = 0;
 	info->value = 0;
 	info->precision = 0;
+	info->type = 0;
 }
 
 int	ft_printf(const char* format, ...)
@@ -36,7 +37,7 @@ int	ft_printf(const char* format, ...)
 				info.precision = prec;
 			}
 
-			if ((info.value = ft_parse_specifier(&format, &ap)) < 0 && (info.sign = 1))
+			if ((info.value = ft_parse_specifier(&format, &ap, &info)) < 0 && !(info.type == 'c' || info.type == 's') && (info.sign = 1))
 				info.value = info.value * -1;
 
 			ft_print_value(info);

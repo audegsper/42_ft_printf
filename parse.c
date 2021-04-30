@@ -37,16 +37,13 @@ int	ft_parse_number(const char** format, va_list* ap, char option)
 	return (ret);
 }
 
-long long ft_parse_specifier(const char **format, va_list *ap)
+long long ft_parse_specifier(const char** format, va_list* ap, t_info *info)
 {
 	long long	value;
 
 	value = 0;
 	if (**format == 'd' || **format == 'i' || **format == 'c')
-	{
-		(value = (long long)va_arg(*ap, int));
-		(*format)++;
-	}
+		value = (long long)va_arg(*ap, int);
 	else if (**format == '%')
 		value = '%';
 	else if (**format == 's')
@@ -54,7 +51,9 @@ long long ft_parse_specifier(const char **format, va_list *ap)
 	else if (**format == 'u' || **format == 'x' || **format == 'X')
 		value = (long long)va_arg(*ap, unsigned int);
 	else if (**format == 'p')
-		value = (long long)va_arg(*ap, void*);
+		value = (unsigned long)va_arg(*ap, void*);
 
+	info->type = **format;
+	(*format)++;
 	return value;
 }
