@@ -40,7 +40,8 @@ int	ft_printf(const char* format, ...)
 			if ((info.value = ft_parse_specifier(&format, &ap, &info)) < 0 && !(info.type == 'c' || info.type == 's') && (info.sign = 1))
 				info.value = info.value * -1;
 
-			ft_print_value(info);
+			if (!(info.type == 'e'))
+				ft_print_value(info);
 		}
 		else
 			g_ret += write(1, format++, 1);
@@ -75,4 +76,21 @@ int main()
 	printf("-->|%0*.1d|<--\n", -4, -12);
 	ft_printf("-->|%0*.*d|<--\n", 4, 0, -12);
 	printf("-->|%0*.*d|<--\n", 4, 0, -12);
-}*/
+
+
+	ft_printf("-->|%-16.s|<--\n", "abc");
+	printf("-->|%-16.s|<--\n", "abc");
+
+	ft_printf("-->|%*.5s|<--\n", 0, "abc");
+	printf("-->|%*.5s|<--\n", 0, "abc");
+
+	ft_printf("-->|%1.*s|<--\n", 2, "abc");
+	printf("-->|%1.*s|<--\n", 2, "abc");
+
+	ft_printf("-->|%-*.4s|<--\n", 4, "abc");
+	printf("-->|%-*.4s|<--\n", 4, "abc");
+
+	ft_printf("-->|%-1.2s|<--\n", "abc");
+	printf("-->|%-1.2s|<--\n", "abc");
+}
+*/

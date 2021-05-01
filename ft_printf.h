@@ -31,7 +31,7 @@ void	put_number(long long n, char* base, int len);
 int		put_string(int len, char* buf);
 
 size_t	ft_strlen(const char* s);
-size_t	ft_typelen(const char** s, long long n, int len, t_info info);
+size_t	ft_typelen(const char** s, long long n, int len, t_info *info);
 int		ft_numlen(long long n, int len);
 
 #endif

@@ -10,7 +10,7 @@ int ft_parse_flag(const char** format)
 		if (**format == '0' && (*format)++)
 			flag = '0';
 		else if (**format == '-' && (*format)++)
-			flag = '-';
+			flag = (**format == '0' && (*format)++ ? '-' : '-');
 	}
 	return flag;
 }
@@ -52,6 +52,11 @@ long long ft_parse_specifier(const char** format, va_list* ap, t_info *info)
 		value = (long long)va_arg(*ap, unsigned int);
 	else if (**format == 'p')
 		value = (unsigned long)va_arg(*ap, void*);
+	else
+	{
+		info->type = 'e';
+		return 0;
+	}
 
 	info->type = **format;
 	(*format)++;

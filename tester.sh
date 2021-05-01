@@ -45,13 +45,13 @@ cd $REAL_PATH
 make re
 echo "" > test_result.txt
 
-# ########## PRINTF_TESTER
-# (이 테스트는 프로젝트 폴더 내 다른 불필요한 파일이 없어야 컴파일이 됨. 타 테스트 폴더/파일 다 삭제해야 함)
-git clone https://github.com/Kwevan/PRINTF_TESTER tests451
-cd tests451
-echo 'testing...'
-echo -ne '1\n1\n1\n1\n1\n1\n1\n' | bash run.sh >> ../test_result.txt
-cd ..
+# # ########## PRINTF_TESTER
+# # (이 테스트는 프로젝트 폴더 내 다른 불필요한 파일이 없어야 컴파일이 됨. 타 테스트 폴더/파일 다 삭제해야 함)
+# git clone https://github.com/Kwevan/PRINTF_TESTER tests451
+# cd tests451
+# echo 'testing...'
+# echo -ne '1\n1\n1\n1\n1\n1\n1\n' | bash run.sh >> ../test_result.txt
+# cd ..
 
 
 # ########## 42TESTERS-PRINTF ##########
