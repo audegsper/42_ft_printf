@@ -51,6 +51,11 @@ int	ft_print_value(t_info info)
 		base = 16;
 		note = (info.type == 'x' || info.type == 'p' ? "0123456789abcdef" : "0123456789ABCDEF");
 	}
+	else if (info.type == 'o')
+	{
+		base = 8;
+		note = "01234567";
+	}
 	else
 	{
 		base = 10;
@@ -72,7 +77,7 @@ int	ft_print_value(t_info info)
 		print_write(gap, " ");
 	print_write(info.sign, "-");
 	if (info.type == 'p' ? g_ret += write(1, &"0x", (info.type == 'p' ? 2 : 0)) : 0);
-	if (!(info.type == 'c' || info.type == 's'))
+	if (!(info.type == 'c'))
 		print_write(zero, "0");
 	if (info.type == '%' && info.value != 0)
 		g_ret += write(1, &info.value, 1);

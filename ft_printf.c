@@ -49,9 +49,9 @@ int	ft_printf(const char* format, ...)
 	return g_ret;
 }
 
-/*
 int main()
 {
+/*
 	ft_printf("-->|%0*.d|<--\n", 4, -135);
 	printf("-->|%0*.d|<--\n", 4, -135);
 	ft_printf("-->|%-4.4d|<--\n", 198);
@@ -92,5 +92,22 @@ int main()
 
 	ft_printf("-->|%-1.2s|<--\n", "abc");
 	printf("-->|%-1.2s|<--\n", "abc");
-}
+
+ft_printf("-->|%09s|<--\n", "hi low");
+printf("-->|%09s|<--\n", "hi low");
+
+	ft_printf("-->|%-05%|<--\n");
+	printf("-->|%-05%|<--\n");
+
+	ft_printf("-->|%-19.131%|<--\n");
+	printf("-->|%-19.131%|<--\n");
+
+		ft_printf("-->|%-5%|<--\n");
+	printf("-->|%-5%|<--\n");
+
+	
 */
+
+		ft_printf("-->|%p|<--\n",(void*)15603137398285451084lu);
+	printf("-->|%p|<--\n",(void*)15603137398285451084lu);
+}

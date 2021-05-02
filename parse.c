@@ -20,6 +20,9 @@ int	ft_parse_number(const char** format, va_list* ap, char option)
 	int	ret;
 
 	ret = 0;
+
+	while (**format == ' ' && option == 'w')
+		write(1, " ", 1) && (*format)++;
 	if (**format == '*')
 	{
 		(*format)++;
@@ -42,10 +45,10 @@ long long ft_parse_specifier(const char** format, va_list* ap, t_info *info)
 	long long	value;
 
 	value = 0;
-	if (**format == 'd' || **format == 'i' || **format == 'c')
+	if (**format == 'd' || **format == 'i' || **format == 'c' || **format == 'o')
 		value = (long long)va_arg(*ap, int);
 	else if (**format == '%')
-		value = '%';
+		(value = '%') && (info->precision = 0);
 	else if (**format == 's')
 		value = (long long)va_arg(*ap, char*);
 	else if (**format == 'u' || **format == 'x' || **format == 'X')
