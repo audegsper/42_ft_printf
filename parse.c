@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:11 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 08:44:38 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 08:53:21 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ long long		ft_parse_specifier(const char **format,
 {
 	long long	value;
 
-	value = 0;
 	if (**format == 'd' || **format == 'i' ||
 	**format == 'c' || **format == 'o')
 		value = (long long)va_arg(*ap, int);
@@ -76,5 +75,8 @@ long long		ft_parse_specifier(const char **format,
 	}
 	info->type = **format;
 	(*format)++;
+	if (value < 0 &&
+	!(info->type == 'c' || info->type == 's') && (info->sign = 1))
+		value = value * -1;
 	return (value);
 }

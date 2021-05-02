@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:01 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 08:44:52 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 08:54:06 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,7 @@ int			ft_printf(const char *format, ...)
 				(info.flag = '-');
 			if (*format == '.' && format++)
 				info.precision = ft_parse_number(&format, &ap, 'p');
-			if ((info.value = ft_parse_specifier(&format, &ap, &info)) < 0 &&
-			!(info.type == 'c' || info.type == 's') && (info.sign = 1))
-				info.value = info.value * -1;
+			info.value = ft_parse_specifier(&format, &ap, &info);
 			ft_print_value(info);
 		}
 		else
