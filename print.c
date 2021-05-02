@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/03 08:07:40 by dohykim           #+#    #+#             */
+/*   Updated: 2021/05/03 08:07:42 by dohykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 void	put_number(long long n, char* base, int len)
@@ -11,18 +23,11 @@ int	put_string(int len, char* buf)
 {
 	int i;
 
-	//printf("{len : %d, buf : %s}\n", len, buf);
 	i = 0;
 	if (len == 1)
 		g_ret += write(1, buf, 1);
 	else
 		g_ret += write(1, *(char**)buf, len);
-	//g_ret += _write(1, buf, len);
-	/*while (i++ < len)
-	{
-		g_ret += _write(1, buf, 1);
-		buf++;
-	}*/
 	return i;
 }
 

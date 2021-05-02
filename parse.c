@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parse.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/05/03 07:19:11 by dohykim           #+#    #+#             */
+/*   Updated: 2021/05/03 08:44:38 by dohykim          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-int ft_parse_flag(const char** format)
+int				ft_parse_flag(const char **format)
 {
-	int flag;
+	int			flag;
 
 	flag = 0;
 	while (**format == '-' || **format == '0')
@@ -12,15 +24,14 @@ int ft_parse_flag(const char** format)
 		else if (**format == '-' && (*format)++)
 			flag = (**format == '0' && (*format)++ ? '-' : '-');
 	}
-	return flag;
+	return (flag);
 }
 
-int	ft_parse_number(const char** format, va_list* ap, char option)
+int				ft_parse_number(const char **format, va_list *ap, char option)
 {
-	int	ret;
+	int			ret;
 
 	ret = 0;
-
 	while (**format == ' ' && option == 'w')
 		write(1, " ", 1) && (*format)++;
 	if (**format == '*')
@@ -40,15 +51,18 @@ int	ft_parse_number(const char** format, va_list* ap, char option)
 	return (ret);
 }
 
-long long ft_parse_specifier(const char** format, va_list* ap, t_info *info)
+long long		ft_parse_specifier(const char **format,
+					va_list *ap, t_info *info)
 {
 	long long	value;
 
 	value = 0;
-	if (**format == 'd' || **format == 'i' || **format == 'c' || **format == 'o')
+	if (**format == 'd' || **format == 'i' ||
+	**format == 'c' || **format == 'o')
 		value = (long long)va_arg(*ap, int);
 	else if (**format == '%')
-		(value = '%') && (info->precision = 0);
+		(value = '%') &&
+		(info->precision = 0);
 	else if (**format == 's')
 		value = (long long)va_arg(*ap, char*);
 	else if (**format == 'u' || **format == 'x' || **format == 'X')
@@ -58,10 +72,9 @@ long long ft_parse_specifier(const char** format, va_list* ap, t_info *info)
 	else
 	{
 		info->type = 'e';
-		return 0;
+		return (0);
 	}
-
 	info->type = **format;
 	(*format)++;
-	return value;
+	return (value);
 }
