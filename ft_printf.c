@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:01 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 22:04:16 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 22:52:22 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,3 @@ int			ft_printf(const char *format, ...)
 	}
 	return (g_ret);
 }
-
-// int main()
-// {
-// 	return 0;
-// }

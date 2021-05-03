@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:31 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 22:18:02 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 22:51:37 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ void				init_struct(t_info *info);
 ********** parse.c **************
 */
 int					ft_parse_flag(const char **format);
-int					ft_parse_number(const char **format, va_list *ap, char option);
+int					ft_parse_number
+					(const char **format, va_list *ap, char option);
 long long			ft_parse_specifier
 					(const char **format, va_list *ap, t_info *info);
 /*
