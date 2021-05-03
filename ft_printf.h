@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:31 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 21:29:58 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 22:18:02 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,12 @@ long long			ft_parse_specifier
 ********** print.c **************
 */
 void				ft_print_value(t_info info);
-static int			calc_zero (t_info info, int len);
-static void			calc_base(int *base, char **note, t_info info);
-static int			calc_gap(t_info info, int len, int zero);
 /*
 ********** utils.c **************
 */
 int					put_string(int len, char *buf);
 int					print_write(int gap, char *str);
 void				put_number(long long n, char *base, int len);
-size_t				ft_typelen(const char **s, long long n, int len, t_info *info);
-static size_t		ft_strlen(long long n, t_info *info);
+size_t				ft_typelen(char **s, long long n, int len, t_info *info);
 
 #endif

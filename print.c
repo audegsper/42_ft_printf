@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 08:07:40 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 21:28:21 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 22:20:08 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,24 @@ static int		calc_gap(t_info info, int len, int zero)
 	num = 0;
 	if ((info.width >= info.precision && info.width > len) || info.value <= 0
 		|| (info.type == 's' && info.width < info.precision))
-		if (!(info.type == 'c' || info.type == 's') && info.value == 0 &&
-		(info.precision == -1 || info.precision == -3) ||
-		(info.type == 's' && info.width < info.precision))
 		{
-			num = info.width - (info.type == 'p' ? 2 : 0);
-			if (info.type == 's' && info.precision > len)
-				num = num - len;
-			else if (info.type == 's')
-				num = num - info.precision;
-		}
-		else
-		{
-			num = (info.precision > info.width ? info.width - info.precision :
-			info.width - len - zero) - info.sign;
-			if (info.type == 'p')
-				num = num - 2;
+			if ((!(info.type == 'c' || info.type == 's') && info.value == 0 &&
+			(info.precision == -1 || info.precision == -3)) ||
+			(info.type == 's' && info.width < info.precision))
+			{
+				num = info.width - (info.type == 'p' ? 2 : 0);
+				if (info.type == 's' && info.precision > len)
+					num = num - len;
+				else if (info.type == 's')
+					num = num - info.precision;
+			}
+			else
+			{
+				num = (info.precision > info.width ? info.width - info.precision :
+				info.width - len - zero) - info.sign;
+				if (info.type == 'p')
+					num = num - 2;
+			}
 		}
 	return (num);
 }
@@ -82,7 +84,7 @@ void			ft_print_value(t_info info)
 	char		*note;
 
 	calc_base(&base, &note, info);
-	len = ft_typelen(&info.value, info.value, base, &info);
+	len = ft_typelen( (char **) (&info.value), info.value, base, &info);
 	zero = calc_zero(info, len);
 	gap = calc_gap(info, len, zero);
 	if (!(info.flag == '-'))
@@ -97,7 +99,7 @@ void			ft_print_value(t_info info)
 	!(info.value == 0 && (info.precision == -1 || info.precision == -3)))
 		put_number(info.value, note, base);
 	else if (info.type == 'c' || info.type == 's')
-		put_string(len, &info.value);
+		put_string(len, (char *)(&info.value));
 	if (info.flag == '-')
 		print_write(gap, " ");
 }

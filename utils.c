@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:27 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 21:29:04 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 22:41:56 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,31 +22,35 @@ static size_t	ft_strlen(long long n, t_info *info)
 			i++;
 	else
 		(i = 6) &&
-		(info->value = "(null)");
+		(info->value = (long long)"(null)");
 	if (info->precision < 0 && !(info->precision == -2))
 		i = 0;
 	else
-		i = (i > info->precision &&
-		info->precision != 0 ? info->precision : i);
+		i = (i > (size_t)info->precision &&
+		info->precision != 0 ? (size_t)info->precision : i);
 	return (i);
 }
 
-size_t			ft_typelen(const char **s, long long n, int len, t_info *info)
+size_t			ft_typelen(char **s, long long n, int len, t_info *info)
 {
 	size_t		i;
+	long long 	temp;
 
 	i = 0;
 	if (info->type == 'c' || info->type == '%')
 	{
 		i = ((char)n == '\0' || (char)n < 0 ? 1 : 0);
-		if ((char)n > 0 && (char)n < 128)
+		if ((char)n > 0)
 			i++;
 	}
 	else if (info->type == 's')
 	{
 		i = ft_strlen(n, info);
 		if (i == 1)
-			*s = **s;
+		{
+			temp = (long long)(**s);
+			*s = (char *)temp;
+		}
 	}
 	else
 	{
@@ -59,7 +63,7 @@ size_t			ft_typelen(const char **s, long long n, int len, t_info *info)
 
 void			put_number(long long n, char *base, int len)
 {
-	if (n > (unsigned long long)len - 1)
+	if (n > (long long)len - 1)
 		put_number(n / len, base, len);
 	g_ret += write(1, &(base[n % len]), 1);
 }
