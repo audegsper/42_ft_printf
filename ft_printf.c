@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dohykim <dohykim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:01 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 08:54:06 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 18:21:08 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,17 @@ int			ft_printf(const char *format, ...)
 	}
 	return (g_ret);
 }
+
+/*
+int main()
+{
+	ft_printf("%p\n",(void*)9420165689360028937lu);
+	printf("%p\n",(void*)9420165689360028937lu);
+
+	ft_printf("%d\n",(void*)9420165689360028937lu);
+	printf("%d\n",(void*)9420165689360028937lu);
+
+
+}
+
+*/

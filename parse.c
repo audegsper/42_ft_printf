@@ -52,7 +52,7 @@ int				ft_parse_number(const char **format, va_list *ap, char option)
 }
 
 long long		ft_parse_specifier(const char **format,
-					va_list *ap, t_info *info)
+				va_list *ap, t_info *info)
 {
 	long long	value;
 
@@ -67,7 +67,7 @@ long long		ft_parse_specifier(const char **format,
 	else if (**format == 'u' || **format == 'x' || **format == 'X')
 		value = (long long)va_arg(*ap, unsigned int);
 	else if (**format == 'p')
-		value = (unsigned long)va_arg(*ap, void*);
+		value = (unsigned long)va_arg(*ap, unsigned long long);
 	else
 	{
 		info->type = 'e';

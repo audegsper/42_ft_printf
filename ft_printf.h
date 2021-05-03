@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dohykim <dohykim@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:31 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 08:12:14 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 18:56:40 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ int				ft_parse_number(const char **format, va_list *ap, char option);
 long long		ft_parse_specifier
 					(const char **format, va_list *ap, t_info *info);
 
-int				ft_print_value(t_info info);
+void				ft_print_value(t_info info);
 int				print_write(int gap, char *str);
 void			put_number(long long n, char *base, int len);
 int				put_string(int len, char *buf);
+int	calcualte_option (t_info info, int len, int zero, char option);
+void calc_base(int *base, char** note, t_info info);
+int		calc_gap(t_info info, int len, int zero);
 
-size_t			ft_strlen(const char *s);
+size_t			ft_strlen(long long n, t_info *info);
 size_t			ft_typelen(const char **s, long long n, int len, t_info *info);
-int				ft_numlen(long long n, int len);
 
 #endif
