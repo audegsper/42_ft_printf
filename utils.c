@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohykim <dohykim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:27 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 18:35:57 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 21:29:04 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t		ft_strlen(long long n, t_info *info)
+static size_t	ft_strlen(long long n, t_info *info)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
 	if (info->value != 0)
@@ -31,9 +31,9 @@ size_t		ft_strlen(long long n, t_info *info)
 	return (i);
 }
 
-size_t		ft_typelen(const char **s, long long n, int len, t_info *info)
+size_t			ft_typelen(const char **s, long long n, int len, t_info *info)
 {
-	size_t	i;
+	size_t		i;
 
 	i = 0;
 	if (info->type == 'c' || info->type == '%')
@@ -57,16 +57,16 @@ size_t		ft_typelen(const char **s, long long n, int len, t_info *info)
 	return (i);
 }
 
-void		put_number(long long n, char *base, int len)
+void			put_number(long long n, char *base, int len)
 {
 	if (n > (unsigned long long)len - 1)
 		put_number(n / len, base, len);
 	g_ret += write(1, &(base[n % len]), 1);
 }
 
-int			put_string(int len, char *buf)
+int				put_string(int len, char *buf)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	if (len == 1)
@@ -76,9 +76,9 @@ int			put_string(int len, char *buf)
 	return (i);
 }
 
-int			print_write(int len, char *buf)
+int				print_write(int len, char *buf)
 {
-	int		i;
+	int			i;
 
 	i = 0;
 	while (i++ < len)

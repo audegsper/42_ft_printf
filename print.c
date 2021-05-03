@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   print.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dohykim <dohykim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 08:07:40 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 18:59:42 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/03 21:28:21 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		calc_zero(t_info info, int len)
+static int		calc_zero(t_info info, int len)
 {
-	int	num;
+	int			num;
 
 	num = 0;
 	if (info.precision > 0 && !(info.type == 'c' || info.type == 's'))
@@ -26,9 +26,9 @@ int		calc_zero(t_info info, int len)
 	return (num);
 }
 
-int		calc_gap(t_info info, int len, int zero)
+static int		calc_gap(t_info info, int len, int zero)
 {
-	int	num;
+	int			num;
 
 	num = 0;
 	if ((info.width >= info.precision && info.width > len) || info.value <= 0
@@ -53,7 +53,7 @@ int		calc_gap(t_info info, int len, int zero)
 	return (num);
 }
 
-void	calc_base(int *base, char **note, t_info info)
+static void		calc_base(int *base, char **note, t_info info)
 {
 	if (info.type == 'p' || info.type == 'x' || info.type == 'X')
 	{
@@ -73,13 +73,13 @@ void	calc_base(int *base, char **note, t_info info)
 	}
 }
 
-void	ft_print_value(t_info info)
+void			ft_print_value(t_info info)
 {
-	int		gap;
-	int		zero;
-	int		len;
-	int		base;
-	char	*note;
+	int			gap;
+	int			zero;
+	int			len;
+	int			base;
+	char		*note;
 
 	calc_base(&base, &note, info);
 	len = ft_typelen(&info.value, info.value, base, &info);

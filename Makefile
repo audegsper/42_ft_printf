@@ -6,12 +6,12 @@
 #    By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 21:24:23 by dohykim           #+#    #+#              #
-#    Updated: 2021/05/03 21:24:30 by dohykim          ###   ########.fr        #
+#    Updated: 2021/05/03 21:26:16 by dohykim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-SRCS		= ./ft_printf.c 	\
+SRCS		= ./ft_printf.c \
 			  ./parse.c \
 			  ./print.c \
 			  ./utils.c \
