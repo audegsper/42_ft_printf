@@ -6,7 +6,7 @@
 #    By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/03 21:24:23 by dohykim           #+#    #+#              #
-#    Updated: 2021/05/03 22:34:17 by dohykim          ###   ########.fr        #
+#    Updated: 2021/05/03 23:00:23 by dohykim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CFLAGS		= -Wall -Wextra -Werror
 all : $(NAME)
 
 %.o: %.c
-	$(CC) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME) : $(OBJS)
 	$(LIB) $(NAME) $(OBJS)
