@@ -11,7 +11,6 @@ LIB			= ar rc
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
 
-
 all : $(NAME)
 
 %.o: %.c
