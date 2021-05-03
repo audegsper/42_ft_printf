@@ -50,17 +50,3 @@ int			ft_printf(const char *format, ...)
 	}
 	return (g_ret);
 }
-
-/*
-int main()
-{
-	ft_printf("%p\n",(void*)9420165689360028937lu);
-	printf("%p\n",(void*)9420165689360028937lu);
-
-	ft_printf("%d\n",(void*)9420165689360028937lu);
-	printf("%d\n",(void*)9420165689360028937lu);
-
-
-}
-
-*/

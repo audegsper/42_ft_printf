@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-size_t	ft_strlen(long long n, t_info *info)
+size_t		ft_strlen(long long n, t_info *info)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	if (info->value != 0)
@@ -31,7 +31,7 @@ size_t	ft_strlen(long long n, t_info *info)
 	return (i);
 }
 
-size_t	ft_typelen(const char **s, long long n, int len, t_info *info)
+size_t		ft_typelen(const char **s, long long n, int len, t_info *info)
 {
 	size_t	i;
 
@@ -57,31 +57,31 @@ size_t	ft_typelen(const char **s, long long n, int len, t_info *info)
 	return (i);
 }
 
-void	put_number(long long n, char* base, int len)
+void		put_number(long long n, char *base, int len)
 {
 	if (n > (unsigned long long)len - 1)
 		put_number(n / len, base, len);
 	g_ret += write(1, &(base[n % len]), 1);
 }
 
-int	put_string(int len, char* buf)
+int			put_string(int len, char *buf)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	if (len == 1)
 		g_ret += write(1, buf, 1);
 	else
 		g_ret += write(1, *(char**)buf, len);
-	return i;
+	return (i);
 }
 
-int print_write(int len, char* buf)
+int			print_write(int len, char *buf)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (i++ < len)
 		g_ret += write(1, buf, 1);
-	return i;
+	return (i);
 }

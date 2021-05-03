@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-int		calcualte_option(t_info info, int len, int zero, char option)
+int		calc_zero(t_info info, int len)
 {
 	int	num;
 
@@ -83,7 +83,7 @@ void	ft_print_value(t_info info)
 
 	calc_base(&base, &note, info);
 	len = ft_typelen(&info.value, info.value, base, &info);
-	zero = calcualte_option(info, len, zero, 'z');
+	zero = calc_zero(info, len);
 	gap = calc_gap(info, len, zero);
 	if (!(info.flag == '-'))
 		print_write(gap, " ");
