@@ -6,7 +6,7 @@
 /*   By: dohykim <dohykim@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/03 07:19:27 by dohykim           #+#    #+#             */
-/*   Updated: 2021/05/03 22:57:54 by dohykim          ###   ########.fr       */
+/*   Updated: 2021/05/04 22:00:59 by dohykim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,14 @@ static size_t	ft_strlen(long long n, t_info *info)
 size_t			ft_typelen(char **s, long long n, int len, t_info *info)
 {
 	size_t		i;
-	long long	temp;
 
 	if (info->type == 'c' || info->type == '%')
-	{
-		i = ((char)n == '\0' || (char)n < 0 ? 1 : 0);
-		if ((char)n > 0)
-			i++;
-	}
+		i = 1;
 	else if (info->type == 's')
 	{
 		i = ft_strlen(n, info);
 		if (i == 1)
-		{
-			temp = (long long)(**s);
-			*s = (char *)temp;
-		}
+			*s = (char *)(long long)(**s);
 	}
 	else
 	{
